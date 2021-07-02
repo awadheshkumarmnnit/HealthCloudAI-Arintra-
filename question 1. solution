@@ -1,0 +1,44 @@
+import java.util.*;
+public class Main
+{
+    public static void main(String[] args) {
+        TreeMap<String,TreeMap<String,List<String>>> dict= new TreeMap<>();
+        TreeMap<String,List<String>> temp1 = new TreeMap<>();
+        List<String> list1 = new ArrayList<>();
+        list1.add("Andominal pain, right upper quadrant");
+        list1.add("Andominal pain, right lower quadrant");
+        list1.add("Andominal pain, left upper quadrant");
+        list1.add("Andominal pain, right upper quadrant");
+        temp1.put("location",list1);
+        List<String> list2 = new ArrayList<>();
+        list2.add("Abdominal pain, mild");
+        list2.add("Abdominal pain, moderate");
+        list2.add("Abdominal pain, severe");
+        temp1.put("severity",list2);
+        dict.put("Abdominal pain",temp1);
+        TreeMap<String,List<String>> temp2 = new TreeMap<>();
+        List<String> list3 = new ArrayList<>();
+        list3.add("Chest pain, left side");
+        list3.add("Chest pain, right side");
+        temp2.put("location",list3);
+        List<String> list4 = new ArrayList<>();
+        list4.add("Chest pain, mild");
+        list4.add("Chest pain, moderate");
+        list4.add("Chest pain, severe");
+        temp2.put("severity",list4);
+        dict.put("Chest pain",temp2);
+        /Print the Symptoms tree/
+        System.out.println("Root");
+        for(String i: dict.keySet()){
+            System.out.print("--symptom--");
+            System.out.println(i);
+            TreeMap<String,List<String>> op = dict.get(i);
+            for(String j:op.keySet()){
+                List<String> tempop = op.get(j);
+                for(int k=0;k<tempop.size();k++){
+                System.out.println("                --"+j+"--"+tempop.get(k));
+                }
+            }
+        }
+    }
+}
