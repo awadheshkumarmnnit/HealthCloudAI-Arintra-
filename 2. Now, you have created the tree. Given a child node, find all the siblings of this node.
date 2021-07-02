@@ -1,0 +1,51 @@
+import java.util.*;
+public class Main
+{
+    public static void main(String[] args) {
+        TreeMap<String,TreeMap<String,List<String>>> dict= new TreeMap<>();
+        TreeMap<String,List<String>> temp1 = new TreeMap<>();
+        List<String> list1 = new ArrayList<>();
+        list1.add("Andominal pain, right upper quadrant");
+        list1.add("Andominal pain, right lower quadrant");
+        list1.add("Andominal pain, left upper quadrant");
+        list1.add("Andominal pain, right upper quadrant");
+        temp1.put("location",list1);
+        List<String> list2 = new ArrayList<>();
+        list2.add("Abdominal pain, mild");
+        list2.add("Abdominal pain, moderate");
+        list2.add("Abdominal pain, severe");
+        temp1.put("severity",list2);
+        dict.put("Abdominal pain",temp1);
+        TreeMap<String,List<String>> temp2 = new TreeMap<>();
+        List<String> list3 = new ArrayList<>();
+        list3.add("Chest pain, left side");
+        list3.add("Chest pain, right side");
+        temp2.put("location",list3);
+        List<String> list4 = new ArrayList<>();
+        list4.add("Chest pain, mild");
+        list4.add("Chest pain, moderate");
+        list4.add("Chest pain, severe");
+        temp2.put("severity",list4);
+        dict.put("Chest pain",temp2);
+    
+        /*Q2 Printing output */ 
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        if(dict.containsKey(str)){
+            for(String i: dict.keySet()){
+            if(!str.equals(i)) System.out.println(i);
+            }
+        }
+        else{
+            String tarr[] = str.split(",");
+            String t = tarr[0];
+            TreeMap<String,List<String>> op = dict.get(t);
+            for(String j:op.keySet()){
+                List<String> tempop = op.get(j);
+                for(int k=0;k<tempop.size();k++){
+                    if(!tempop.get(k).equals(str)) System.out.println(tempop.get(k));
+                }
+            }
+        }
+    }
+}
